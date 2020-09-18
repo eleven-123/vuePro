@@ -1,0 +1,28 @@
+{
+  "name": "vue-project",
+  "version": "1.0.0",
+  "description": "基于webpack的vue项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --port 3000 --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/eleven_123/vue-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.4.1",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}
