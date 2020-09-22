@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.4.1",
     "vue-loader": "^15.9.3",
@@ -23,6 +24,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "vue": "^2.6.12"
+    "babel-core": "^6.26.3",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.3"
   }
 }

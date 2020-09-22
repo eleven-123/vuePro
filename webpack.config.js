@@ -1,4 +1,5 @@
 var htmlwebpackplugin = require('html-webpack-plugin');
+var VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: __dirname + '/src/main.js',
@@ -7,6 +8,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins:[
+    new VueLoaderPlugin(),
     new htmlwebpackplugin({
       template: __dirname + '/src/index.html',
       filename: 'index.html'
