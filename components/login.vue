@@ -12,6 +12,11 @@
     }
   }
 </script>
-<style lang="less">
-
+<style lang="less" scoped>
+  div{
+    background: #f8f8f8;
+    h3{
+      color: red;
+    }
+  }
 </style>
