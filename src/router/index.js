@@ -1,23 +1,15 @@
 
 import VueRouter from 'vue-router';
 
-import index from '../pages/index.vue';
-import home from '../components/tabbar/home.vue';
-import cart from '../components/tabbar/cart.vue';
-
-import login from '../components/login.vue';
+import index from '../pages/index/index.vue';
+import cart from '../pages/cart/index.vue';
+import login from '../pages/login/index.vue';
 
 var router = new VueRouter({
   routes: [
-    {path:'/', redirect:'/home'},
-    {
-      path:'/index', 
-      component: index,
-      children: [
-        {path:'/home', component: home},
-        {path:'/cart', component: cart},
-      ]
-    },
+    {path:'/', redirect:'/index'},
+    {path:'/index', component: index,},
+    {path:'/cart', component: cart},
     {path:'/login', component: login},
   ]
 })

@@ -21,7 +21,7 @@ Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 
 import router from './router/index';
-import app from './app.vue';
+import app from './App.vue';
 
 new Vue({
   el: '#app',

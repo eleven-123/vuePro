@@ -1,5 +1,16 @@
 <template>
-  <div>
+  <div class="page">
+    <mt-header title="首页" fixed class="header">
+      <router-link to="/login" slot="right">
+        <mt-button >登录</mt-button>
+      </router-link>
+    </mt-header>
+    <!-- 底部导航 -->
+    <mt-tabbar fixed v-model="selected" class="tabbar">    
+      <mt-tab-item id="index" ><router-link to="/" tag="div">Home</router-link></mt-tab-item>    
+      <mt-tab-item id="cart" ><router-link to="/cart" tag="div">Cart</router-link></mt-tab-item>    
+    </mt-tabbar>
+    
     <router-view />
   </div>
   
@@ -8,8 +19,17 @@
   export default{
     data(){
       return{
-        
+        selected:'index'
       }
+    },
+    
+    mounted(){
+      let path = this.$route.path;
+      this.selected = path.substr(1,path.length-1)
+    },
+    updated() {
+      let path = this.$route.path;
+      this.selected = path.substr(1,path.length-1)
     },
   }
 </script>
@@ -27,10 +47,7 @@
   ul, ol{
     list-style: none;
   }
-  .header.is-fixed ~ .container{
-    margin-top: 40px;
-  }
-  .tabbar.is-fixed + .container{
-    margin-bottom: 40px;
+  .page{
+    padding: 40px 0 50px;
   }
 </style>
