@@ -8,8 +8,8 @@ import login from '../pages/login/index.vue';
 var router = new VueRouter({
   routes: [
     {path:'/', redirect:'/index'},
-    {path:'/index', component: index,},
-    {path:'/cart', component: cart},
+    {path:'/index', component: index, name: 'index'},
+    {path:'/cart', component: cart, name: 'cart'},
     {path:'/login', component: login},
   ]
 })

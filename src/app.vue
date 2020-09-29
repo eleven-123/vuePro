@@ -10,8 +10,12 @@
       <mt-tab-item id="index" ><router-link to="/" tag="div">Home</router-link></mt-tab-item>    
       <mt-tab-item id="cart" ><router-link to="/cart" tag="div">Cart</router-link></mt-tab-item>    
     </mt-tabbar>
-    
-    <router-view />
+    <!-- 内容区 -->
+    <div class="container">
+      <transition name="slide-right" >
+        <router-view />
+      </transition>
+    </div>
   </div>
   
 </template>
@@ -19,18 +23,22 @@
   export default{
     data(){
       return{
-        selected:'index'
+        
       }
     },
-    
-    mounted(){
-      let path = this.$route.path;
-      this.selected = path.substr(1,path.length-1)
+    computed:{
+      selected:{
+        get(){
+          return this.$route.name
+        },
+        set(){
+          return this.$route.name
+        }      
+      }
     },
-    updated() {
-      let path = this.$route.path;
-      this.selected = path.substr(1,path.length-1)
-    },
+    methods:{
+      
+    }
   }
 </script>
 <style lang="less">
@@ -43,11 +51,39 @@
     font-size: 14px;
     color: #333;
     background: #f8f8f8;
+    height: 100%;
   }
   ul, ol{
     list-style: none;
   }
   .page{
+    width: 100%;
+    height: 100%;
     padding: 40px 0 50px;
+    overflow-x: hidden;
+  }
+  .container{
+    position: relative;
+    min-height: 100%;
+  }
+
+  .slide-right-enter, .slide-right-leave{
+    transform: translateX(100%);
+  }
+  .slide-right-enter-to{
+    transform: translateX(0);
+  }
+  .slide-right-leave-to{
+    transform: translateX(-100%);
+  }
+  .slide-right-enter-active, .slide-right-leave-active{
+    transition: all .3s ease-out;
+  }
+
+  .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 </style>

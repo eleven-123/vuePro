@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="content">
     <mt-swipe :auto="4000" class="swiper">
       <mt-swipe-item v-for="(item, index) in banner" :key="index">
         <img :src="item" />
@@ -13,6 +13,9 @@
         </router-link>
       </li>
     </ul>
+    <mt-cell title="推荐" is-link>
+      <span style="font-size:13px;">more</span>
+    </mt-cell>
 
   </div>
 </template>
