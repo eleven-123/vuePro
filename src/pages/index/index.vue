@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <mt-swipe :auto="4000" class="swiper">
       <mt-swipe-item v-for="(item, index) in banner" :key="index">
         <img :src="item" />
@@ -20,6 +20,8 @@
   </div>
 </template>
 <script>
+
+import axios from 'axios';
 export default {
   data(){
     return{
@@ -32,6 +34,18 @@ export default {
         {id:5,icon:'/static/images/menu5.png',url:'/login',title:'item5'},
         {id:6,icon:'/static/images/menu6.png',url:'/login',title:'item6'}
       ]
+    }
+  },
+  created(){
+    this.getData()
+  },
+  methods:{
+    getData(){
+      axios.get('http://fumanqiankun.weiyuekj.com/api?method=appplus.version').then(function(res) {
+        console.log(res);
+      }, function(err) {
+        console.log(err);
+      })
     }
   }
 }
