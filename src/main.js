@@ -25,6 +25,12 @@ Vue.component(Search.name, Search)
 import router from './router/index';
 import app from './App.vue';
 
+import moment from 'moment';
+// 全局过滤器 - 时间格式化
+Vue.filter('dateFormat',function(data, type='YYYY-MM-DD hh:mm:ss'){
+  return moment(data).format(type)
+})
+
 new Vue({
   el: '#app',
   router, // router: router

@@ -25,15 +25,8 @@ import axios from 'axios';
 export default {
   data(){
     return{
-      banner:['/static/images/banner_1.jpg','/static/images/banner_2.jpg','/static/images/banner_3.jpg'],
-      nav:[
-        {id:1,icon:'/static/images/menu1.png',url:'/login',title:'item1'},
-        {id:2,icon:'/static/images/menu2.png',url:'/login',title:'item2'},
-        {id:3,icon:'/static/images/menu3.png',url:'/login',title:'item3'},
-        {id:4,icon:'/static/images/menu4.png',url:'/login',title:'item4'},
-        {id:5,icon:'/static/images/menu5.png',url:'/login',title:'item5'},
-        {id:6,icon:'/static/images/menu6.png',url:'/login',title:'item6'}
-      ]
+      banner:[],
+      nav:[]
     }
   },
   created(){
@@ -41,11 +34,20 @@ export default {
   },
   methods:{
     getData(){
-      axios.get('http://fumanqiankun.weiyuekj.com/api?method=appplus.version').then(function(res) {
-        console.log(res);
-      }, function(err) {
-        console.log(err);
-      })
+      // axios.get('http://fumanqiankun.weiyuekj.com/api?method=appplus.version').then(function(res) {
+      //   console.log(res);
+      // }, function(err) {
+      //   console.log(err);
+      // }) 
+      this.banner = ['/static/images/banner_1.jpg','/static/images/banner_2.jpg','/static/images/banner_3.jpg'];
+      this.nav = [
+        {id:1,icon:'/static/images/menu1.png',url:'/article',title:'article'},
+        {id:2,icon:'/static/images/menu2.png',url:'/login',title:'item2'},
+        {id:3,icon:'/static/images/menu3.png',url:'/login',title:'item3'},
+        {id:4,icon:'/static/images/menu4.png',url:'/login',title:'item4'},
+        {id:5,icon:'/static/images/menu5.png',url:'/login',title:'item5'},
+        {id:6,icon:'/static/images/menu6.png',url:'/login',title:'item6'}
+      ];
     }
   }
 }

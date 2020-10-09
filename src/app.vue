@@ -57,6 +57,9 @@
   ul, ol{
     list-style: none;
   }
+  a, a:hover, a:visited{
+    text-decoration: none;
+  }
   .page{
     width: 100%;
     height: 100%;

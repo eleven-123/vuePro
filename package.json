@@ -36,6 +36,8 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "file-loader": "^6.1.0",
+    "mint-ui": "^2.2.13",
+    "moment": "^2.29.1",
     "url-loader": "^4.1.0",
     "vue": "^2.6.12",
     "vue-router": "^3.4.3"
