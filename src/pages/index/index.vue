@@ -13,10 +13,9 @@
         </router-link>
       </li>
     </ul>
-    <mt-cell title="推荐" is-link>
+    <!-- <mt-cell title="推荐" is-link>
       <span style="font-size:13px;">more</span>
-    </mt-cell>
-
+    </mt-cell> -->
   </div>
 </template>
 <script>

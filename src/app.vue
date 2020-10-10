@@ -60,6 +60,10 @@
   a, a:hover, a:visited{
     text-decoration: none;
   }
+  input, textarea{
+    border: 1px solid #e5e5e5;
+    outline: none;
+  }
   .page{
     width: 100%;
     height: 100%;
