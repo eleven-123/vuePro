@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <mt-header title="首页" fixed class="header">
-      <router-link to="/login" slot="right">
+      <!-- <router-link to="/login" slot="right">
         <mt-button >登录</mt-button>
-      </router-link>
+      </router-link> -->
     </mt-header>
     <!-- 底部导航 -->
     <mt-tabbar fixed v-model="selected" class="tabbar">    
@@ -58,6 +58,7 @@
     list-style: none;
   }
   a, a:hover, a:visited{
+    color: inherit;
     text-decoration: none;
   }
   input, textarea{
@@ -87,5 +88,5 @@
   .slide-right-enter-active, .slide-right-leave-active{
     transition: all .3s ease;
   }
-
+  
 </style>

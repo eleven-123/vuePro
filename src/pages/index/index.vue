@@ -41,8 +41,8 @@ export default {
       this.banner = ['/static/images/banner_1.jpg','/static/images/banner_2.jpg','/static/images/banner_3.jpg'];
       this.nav = [
         {id:1,icon:'/static/images/menu1.png',url:'/article',title:'article'},
-        {id:2,icon:'/static/images/menu2.png',url:'/login',title:'item2'},
-        {id:3,icon:'/static/images/menu3.png',url:'/login',title:'item3'},
+        {id:2,icon:'/static/images/menu2.png',url:'/photo',title:'photo'},
+        {id:3,icon:'/static/images/menu3.png',url:'/goods',title:'goods'},
         {id:4,icon:'/static/images/menu4.png',url:'/login',title:'item4'},
         {id:5,icon:'/static/images/menu5.png',url:'/login',title:'item5'},
         {id:6,icon:'/static/images/menu6.png',url:'/login',title:'item6'}

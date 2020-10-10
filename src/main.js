@@ -12,7 +12,7 @@ import 'mint-ui/lib/style.css'
 //1.按需导入，在.babelrc中配置
 //2.导入需要的组件
 */
-import { Header, Button, Tabbar, TabItem, Swipe, SwipeItem, Cell, Search } from 'mint-ui';
+import { Header, Button, Tabbar, TabItem, Swipe, SwipeItem, Cell, Search, Navbar, Lazyload, Spinner  } from 'mint-ui';
 Vue.component(Header.name, Header)
 Vue.component(Button.name, Button)
 Vue.component(Tabbar.name, Tabbar)
@@ -21,6 +21,9 @@ Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Cell.name, Cell)
 Vue.component(Search.name, Search)
+Vue.component(Navbar.name, Navbar)
+Vue.component(Spinner.name, Spinner)
+Vue.use(Lazyload);
 
 import router from './router/index';
 import app from './App.vue';
