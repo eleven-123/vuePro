@@ -1,6 +1,7 @@
 <template>
   <div class="page">
-    <mt-header title="首页" fixed class="header">
+    <mt-header :title="title" fixed class="header">
+      <mt-button icon="back" slot="left" @click="back" v-show="hasBack">返回</mt-button>
       <!-- <router-link to="/login" slot="right">
         <mt-button >登录</mt-button>
       </router-link> -->
@@ -13,7 +14,7 @@
     </mt-tabbar>
     <!-- 内容区 -->
     <div class="container">
-      <transition name="slide-right" >
+      <transition :name="transition" >
         <router-view />
       </transition>
     </div>
@@ -24,7 +25,9 @@
   export default{
     data(){
       return{
-        
+        title:'首页',
+        hasBack:true,
+        transition:'slide-right'
       }
     },
     computed:{
@@ -38,7 +41,13 @@
       }
     },
     methods:{
-      
+      back(){
+        this.transition = 'slide-left'
+        this.$router.go(-1)
+        setTimeout(()=>{
+          this.transition = 'slide-right'
+        },300)
+      }
     }
   }
 </script>
@@ -86,6 +95,19 @@
     position: absolute;
   }
   .slide-right-enter-active, .slide-right-leave-active{
+    transition: all .3s ease;
+  }
+
+  .slide-left-enter{
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  .slide-left-leave-to{
+    opacity: 0;
+    transform: translateX(100%);
+    position: absolute;
+  }
+  .slide-left-enter-active, .slide-left-leave-active{
     transition: all .3s ease;
   }
   

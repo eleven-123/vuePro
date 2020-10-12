@@ -18,12 +18,12 @@ var router = new VueRouter({
     {path:'/index', component: index, name: 'index'},
     {path:'/member', component: member, name: 'member'},
     {path:'/cart', component: cart, name: 'cart'},
-    {path:'/article', component: list},
-    {path:'/article/:id', component: detail},
-    {path:'/photo', component: photoList},
-    {path:'/photo/:id', component:photoDetail},
-    {path:'/goods', component: goodsList},
-    {path:'/goods/:id', component:goodsDetail},
+    {path:'/article', component: list, name:'articleList'},
+    {path:'/article/:id', component: detail, name:'articleDetail'},
+    {path:'/photo', component: photoList, name:'photoList'},
+    {path:'/photo/:id', component:photoDetail, name:'photoDetail'},
+    {path:'/goods', component: goodsList, name:'goodsList'},
+    {path:'/goods/:id', component:goodsDetail, name:'goodsDetail'},
     {path:'/login', component: login},
   ]
 })
