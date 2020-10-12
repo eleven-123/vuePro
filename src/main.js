@@ -25,6 +25,9 @@ Vue.component(Navbar.name, Navbar)
 Vue.component(Spinner.name, Spinner)
 Vue.use(Lazyload);
 
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview)
+
 import router from './router/index';
 import app from './App.vue';
 
