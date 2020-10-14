@@ -10,7 +10,7 @@
     <mt-tabbar fixed v-model="selected" class="tabbar">    
       <mt-tab-item id="index" ><router-link to="/" tag="div">Home</router-link></mt-tab-item>    
       <mt-tab-item id="member" ><router-link to="/member" tag="div">Mine</router-link></mt-tab-item>    
-      <mt-tab-item id="cart" ><router-link to="/cart" tag="div">Cart</router-link></mt-tab-item>    
+      <mt-tab-item id="cart" ><router-link to="/cart" tag="div">Cart<mt-badge id="badge" size="small" type="error">0</mt-badge></router-link></mt-tab-item>    
     </mt-tabbar>
     <!-- 内容区 -->
     <div class="container">

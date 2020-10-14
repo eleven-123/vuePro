@@ -1,10 +1,6 @@
 <template>
   <div>
-    <mt-swipe :auto="4000" class="swiper">
-      <mt-swipe-item v-for="(item, index) in banner" :key="index">
-        <img :src="item" />
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :data="banner" :height="height"></swiper>
     <ul class="nav">
       <li class="item" v-for="item in nav" :key="item.id">
         <router-link :to="item.url" tag="div">
@@ -19,14 +15,18 @@
   </div>
 </template>
 <script>
-
+import Swiper from '../../components/swiper.vue';
 import axios from 'axios';
 export default {
   data(){
     return{
+      height: '160px',
       banner:[],
       nav:[]
     }
+  },
+  components: {
+    Swiper,
   },
   created(){
     this.getData()
@@ -52,20 +52,6 @@ export default {
 }
 </script>
 <style lang="less">
-  .swiper{
-    height: 160px;
-    img{
-      width: 100%;
-      max-width: 100%;
-      max-height: 100%;
-    }
-    .mint-swipe-indicator{
-        background: #26a2ff;
-      &.is-active{
-        opacity: 1;
-      }
-    }
-  }
   .nav{
     padding: 12px 5px 0;
     overflow: hidden;
