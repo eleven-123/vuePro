@@ -14,7 +14,7 @@
         </div>
         <div class="g-number">
           购买数量：
-          <number-box :num="num" :min="1" :max="goods.params.stock" @getNum="getNum"></number-box>
+          <number-box :min="1" :max="goods.params.stock" @getNum="getNum"></number-box>
           <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
             <div ref="ball" class="g-ball" v-show="isFly">
               <img :src="goods.imgs[0]" alt="img">
@@ -55,11 +55,11 @@ export default {
   },
   data() {
     return {
-      id:1,
       height: '260px',
-      goods: [],
+      goods: {},
       isFly:false,
-      num:1
+      count:1,
+      id: this.$route.params.id
     }
   },
   created () {
@@ -68,6 +68,7 @@ export default {
   methods: {
     getData() {
       let data = {
+        id: this.id,
         imgs:["https://img13.360buyimg.com/evalpic/s240x240_jfs/t1/54085/1/13732/194509/5da6d50fE32d0191a/68d0ac29ce4a326d.jpg","https://img13.360buyimg.com/evalpic/s240x240_jfs/t1/112626/33/19809/59143/5f815db2Edc947736/dcf50b2d36cd798a.jpg"],
         title: 'vivo Y73s 5G手机 8GB+128GB 银月 AMOLED高清护眼屏 4800万影像系统 5G全网通智能手机',
         price:1929,
@@ -77,16 +78,30 @@ export default {
 
       this.goods = data
     },
-    goDetail(id){console.log(this)
+    goDetail(id){
       // this.$router.push('/photo/'+id)
       // this.$router.push({path:'/photo/'+id})
       this.$router.push({name:'photoDetail', params:{id}})
     },
     getNum(value){
-      this.num = value
+      this.count = value
     },
     addCart(){
-      this.isFly = true
+      this.isFly = true;
+
+      let obj = {
+        id: this.id,
+        count: this.count,
+        title: this.goods.title,
+        img: this.goods.imgs[0],
+        price: this.goods.price
+      };
+      this.$store.commit('setCartList', obj)
+      setTimeout(()=>{
+        this.$store.commit('setBadge', false)
+        this.$store.dispatch('badge')
+      }, 500)
+      
     },
     // 加入购物车-小球半程动画
     beforeEnter(e){

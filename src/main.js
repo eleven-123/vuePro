@@ -41,9 +41,13 @@ Vue.filter('dateFormat',function(data, type='YYYY-MM-DD hh:mm:ss'){
   return moment(data).format(type)
 })
 
+// Vuex
+import store from './store/index';
+
 import app from './App.vue';
 new Vue({
   el: '#app',
   router, // router: router
-  render: c => c(app)
+  render: c => c(app),
+  store
 })

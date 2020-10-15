@@ -1,14 +1,29 @@
 <template>
   <div class="input-number">
     <i data-type="reduce" @click="change">-</i>
-    <input type="number" :value="num" @input="input">
+    <input type="number" v-model="num" @blur="input">
     <i data-type="increase" @click="change">+</i>
   </div>
 </template>
 <script>
 import {Toast} from 'mint-ui'
 export default {
-  props:['num','max', 'min'],
+  props:['max', 'min'],
+  data(){
+    return {
+      num: 1
+    }
+  },
+  // computed:{
+  //   num:{
+  //     get(){
+  //       return this.value
+  //     },
+  //     set(){
+  //       return this.value
+  //     }
+  //   }
+  // },
   methods: {
     change(e){
       let type = e.target.dataset.type,
@@ -20,14 +35,16 @@ export default {
       }else{
         num < max ? num++ : (Toast('库存不足'),num = max);
       }
-      this.$emit('getNum', num)
+      this.num = num
+      this.$emit('getNum', this.num)
     },
     input(){
-      let num = this.num,
+      let num = Number(this.num),
+          min = this.min,
           max = this.max;
       num < min ? (Toast('至少添加1件商品'),num = min) : num >= max ? (Toast('库存不足'),num = max) : num =num;
-      
-      this.$emit('getNum', num)
+      this.num = num;
+      this.$emit('getNum', this.num)
     },
     
   },
