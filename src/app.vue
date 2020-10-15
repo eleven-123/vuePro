@@ -13,7 +13,7 @@
       <mt-tab-item id="cart" >
         <router-link to="/cart" tag="div">Cart
           <transition name="badge">
-            <mt-badge id="badge" size="small" type="error" v-show="$store.state.badge">{{$store.getters.cartNum}}</mt-badge>
+            <mt-badge id="badge" size="small" type="error" v-show="$store.state.badge">{{$store.getters.cartCount}}</mt-badge>
           </transition>
         </router-link>
       </mt-tab-item>    

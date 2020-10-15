@@ -24,7 +24,6 @@ const store = new Vuex.Store({
         list.push(payload)
       }
       state.cartList = list;
-      console.log(state.cartList)
     },
     setBadge(state, payload){
       state.badge = payload
@@ -38,7 +37,7 @@ const store = new Vuex.Store({
     }
   },
   getters:{
-    cartNum: state => state.cartList.length
+    cartCount: state => state.cartList.length
   }
 });
 
