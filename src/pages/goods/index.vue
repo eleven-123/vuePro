@@ -30,7 +30,6 @@ export default {
       this.list = data;
     },
     goDetail(id){
-      console.log(this)
       // 1. 最简单的
       // this.$router.push('/goods/'+id)
       // 2. 传递对象

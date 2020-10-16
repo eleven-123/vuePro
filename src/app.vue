@@ -31,8 +31,8 @@
   export default{
     data(){
       return{
-        title:'首页',
-        hasBack:true,
+        // title:'首页',
+        // hasBack:false,
         transition:'slide-right'
       }
     },
@@ -44,8 +44,39 @@
         set(){
           return this.$route.name
         }      
+      },
+      title(){
+        let title = this.getTitle(this.$route.name)
+        return title
+      },
+      hasBack(){
+        let tabbarPage = ['index','member','cart'];
+        let name = this.$route.name;
+        if(tabbarPage.indexOf(name)>-1){
+          return false
+        }else{
+          return true
+        }
       }
+      
     },
+    /*watch:{
+      "$route.name": function(newVal){
+        console.log(newVal)
+        this.title = this.getTitle(newVal)
+        let tabbarPage = ['index','member','cart'];
+        if(tabbarPage.indexOf(newVal)>-1){
+          this.hasBack = false
+        }else{
+          this.hasBack = true
+        }
+      }
+    },  
+    created(){
+      if(this.$route.name !== 'index'){
+        this.title = this.getTitle(this.$route.name)
+      }
+    }, */
     methods:{
       back(){
         this.transition = 'slide-left'
@@ -53,6 +84,36 @@
         setTimeout(()=>{
           this.transition = 'slide-right'
         },300)
+      },
+      getTitle(name){
+        let title = '';
+        switch (name) {
+          case 'index':
+            title = '首页'
+            break;
+          case 'member':
+            title = '个人中心'
+            break;
+          case 'cart':
+            title = '购物车'
+            break;
+          case 'articleList':
+          case 'articleDetail':
+            title = '文章'
+            break;
+          case 'photoList':
+          case 'photoDetail':
+            title = '图片'
+            break;
+          case 'goodsList':
+          case 'goodsDetail':
+            title = '商品'
+            break;
+          default:
+            title = '首页'
+            break;
+        }
+        return title
       }
     }
   }

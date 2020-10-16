@@ -14,7 +14,7 @@
         </div>
         <div class="g-number">
           购买数量：
-          <number-box :min="1" :max="goods.params.stock" @getNum="getNum"></number-box>
+          <number-box :count="count" :min="1" :max="goods.stock" @getNum="getNum"></number-box>
           <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
             <div ref="ball" class="g-ball" v-show="isFly">
               <img :src="goods.imgs[0]" alt="img">
@@ -31,9 +31,9 @@
       <div class="card-hd">商品参数</div>
       <div class="card-bd">
         <ul class="g-params">
-          <li>商品编号：{{goods.params.no}}</li>
-          <li>库存情况：{{goods.params.stock}}</li>
-          <li>上架时间：{{goods.params.add_time | dateFormat}}</li>
+          <li>商品编号：{{goods.no}}</li>
+          <li>库存情况：{{goods.stock}}</li>
+          <li>上架时间：{{goods.add_time | dateFormat}}</li>
         </ul>
       </div>
       <div class="card-ft">
@@ -68,12 +68,14 @@ export default {
   methods: {
     getData() {
       let data = {
-        id: this.id,
+        id: this.id+'',
         imgs:["https://img13.360buyimg.com/evalpic/s240x240_jfs/t1/54085/1/13732/194509/5da6d50fE32d0191a/68d0ac29ce4a326d.jpg","https://img13.360buyimg.com/evalpic/s240x240_jfs/t1/112626/33/19809/59143/5f815db2Edc947736/dcf50b2d36cd798a.jpg"],
         title: 'vivo Y73s 5G手机 8GB+128GB 银月 AMOLED高清护眼屏 4800万影像系统 5G全网通智能手机',
         price:1929,
         marketPrice: 2999,
-        params:{no:5020201014,stock:10,add_time:new Date().getTime()}
+        no:5020201014,
+        stock:10,
+        add_time:new Date().getTime()
       };
 
       this.goods = data
@@ -84,19 +86,19 @@ export default {
       this.$router.push({name:'photoDetail', params:{id}})
     },
     getNum(value){
-      this.count = value
+      this.count = value;
+      this.$forceUpdate();
     },
     addCart(){
       this.isFly = true;
+      let count = this.count;
 
-      let obj = {
-        id: this.id,
-        count: this.count,
-        title: this.goods.title,
-        img: this.goods.imgs[0],
-        price: this.goods.price
-      };
-      this.$store.commit('setCartList', obj)
+      // let obj = Object.assign({},this.goods);
+      // obj.count = this.count;  
+      let obj = {count, ...this.goods};
+
+      obj.selected = false
+      this.$store.commit('addToCart', obj)
       setTimeout(()=>{
         this.$store.commit('setBadge', false)
         this.$store.dispatch('badge')

@@ -35,9 +35,11 @@
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
     "file-loader": "^6.1.0",
     "mint-ui": "^2.2.13",
     "moment": "^2.29.1",
+    "npm": "^6.14.8",
     "url-loader": "^4.1.0",
     "vue": "^2.6.12",
     "vue-preview": "^1.1.3",

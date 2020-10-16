@@ -1,33 +1,41 @@
 <template>
   <div class="input-number">
     <i data-type="reduce" @click="change">-</i>
-    <input type="number" v-model="num" @blur="input">
+    <input type="number" :value="count" @change="input" ref="numberRef">
     <i data-type="increase" @click="change">+</i>
   </div>
 </template>
 <script>
 import {Toast} from 'mint-ui'
 export default {
-  props:['max', 'min'],
-  data(){
-    return {
-      num: 1
+  // props:['count', 'max', 'min'],
+  props:{
+    count:{
+      type: Number,
+      default: 0
+    },
+    max:{
+      type: Number,
+      default: 0
+    },
+    min:{
+      type: Number,
+      default: 0
+    },
+    isChangeItem:{
+      type: Boolean,
+      default: false
+    },
+    changeItem:{
+      type: String,
+      default: ''
     }
   },
-  // computed:{
-  //   num:{
-  //     get(){
-  //       return this.value
-  //     },
-  //     set(){
-  //       return this.value
-  //     }
-  //   }
-  // },
+
   methods: {
     change(e){
       let type = e.target.dataset.type,
-          num = this.num,
+          num = Number(this.$refs.numberRef.value),
           min = this.min,
           max = this.max;
       if(type === 'reduce'){
@@ -35,16 +43,23 @@ export default {
       }else{
         num < max ? num++ : (Toast('库存不足'),num = max);
       }
-      this.num = num
-      this.$emit('getNum', this.num)
+      if(this.isChangeItem){
+        this.$emit('getNum', {id: this.changeItem,num:num})
+      }else{
+        this.$emit('getNum', num)
+      }
     },
     input(){
-      let num = Number(this.num),
+      let num = Number(this.$refs.numberRef.value),
           min = this.min,
           max = this.max;
       num < min ? (Toast('至少添加1件商品'),num = min) : num >= max ? (Toast('库存不足'),num = max) : num =num;
-      this.num = num;
-      this.$emit('getNum', this.num)
+      // this.$emit('getNum', num)
+      if(this.isChangeItem){
+        this.$emit('getNum', {id: this.changeItem,num:num})
+      }else{
+        this.$emit('getNum', num)
+      }
     },
     
   },

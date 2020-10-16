@@ -13,7 +13,7 @@ import 'mint-ui/lib/style.css'
 //1.在.babelrc中配置
 //2.导入需要的组件,如下：
 */
-import { Header, Button, Tabbar, TabItem, Swipe, SwipeItem, Cell, Search, Navbar, Lazyload, Spinner, Badge  } from 'mint-ui';
+import { Header, Button, Tabbar, TabItem, Swipe, SwipeItem, Cell, Search, Navbar, Lazyload, Spinner, Badge, Checklist } from 'mint-ui';
 Vue.component(Header.name, Header)
 Vue.component(Button.name, Button)
 Vue.component(Tabbar.name, Tabbar)
@@ -25,6 +25,8 @@ Vue.component(Search.name, Search)
 Vue.component(Navbar.name, Navbar)
 Vue.component(Spinner.name, Spinner)
 Vue.component(Badge.name, Badge)
+Vue.component(Checklist.name, Checklist)
+
 Vue.use(Lazyload);
 
 // 图片预览-vue-preview
