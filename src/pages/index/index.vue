@@ -38,7 +38,7 @@ export default {
       // }, function(err) {
       //   console.log(err);
       // }) 
-      this.banner = ['/static/images/banner_1.jpg','/static/images/banner_2.jpg','/static/images/banner_3.jpg'];
+      this.banner = ['../../static/images/banner_1.jpg','../../static/images/banner_2.jpg','../../static/images/banner_3.jpg'];
       this.nav = [
         {id:1,icon:'/static/images/menu1.png',url:'/article',title:'article'},
         {id:2,icon:'/static/images/menu2.png',url:'/photo',title:'photo'},
